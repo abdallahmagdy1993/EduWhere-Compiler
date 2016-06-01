@@ -1,0 +1,2 @@
+		**Symbol Table**		
+Level:00      Name:x      Assembly_Name:0_x      Type:int      Constant?:NO

@@ -1,0 +1,27 @@
+int x=10;
+float y=0.5;
+if(x<9) then{
+	float y=1.5;
+	bool b=true;
+	const char cn='q';
+
+}
+else if(y>10.0) then{
+	bool z=true;
+	int hello=152;
+	switch(z){
+		case true:
+			if(hello==12)then
+				int test1=1;
+		break;
+		
+		case false:
+			float test2=1.5;
+		break;
+
+		default:
+			char test3='t';
+
+
+	}
+}

@@ -1,0 +1,12 @@
+int x;
+float y;
+if(y<0f){
+	int z=0;
+}
+int temp =0;
+int abc=10;
+do{
+	bool b=false;
+}while(abc==10)
+float temp2=0f;
+boolean bb=ture;

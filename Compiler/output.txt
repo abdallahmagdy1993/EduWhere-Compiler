@@ -1,0 +1,58 @@
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DD 0_test1
+	;;;;;;; Assignment ;;;;;;;
+	push 0
+error:type missmatch at line 1
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DD 0_temp
+	;;;;;;; Assignment ;;;;;;;
+	push 1
+	pop 0_temp
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DD 0_x
+	;;;;;;; Assignment ;;;;;;;
+	push 0.5
+error:type missmatch at line 3
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DB 0_flag
+	;;;;;;; Assignment ;;;;;;;
+	push 1
+	pop 0_flag
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DD 0_test2
+	;;;;;;; Assignment ;;;;;;;
+	push 1
+	pop 0_test2
+	;;;;;;; Assignment ;;;;;;;
+	push 5
+	push 1.5
+	pop F0
+	pop R0
+	;;;;;;; Add ;;;;;;;
+error:type missmatch at line 6
+error:type missmatch at line 6
+	;;;;;;; Declaration_Assignment ;;;;;;;
+	DD 0_test3
+	;;;;;;; Assignment ;;;;;;;
+	push 5.5
+	pop 0_test3
+	;;;;;;; Assignment ;;;;;;;
+	push 0_test3
+error:type missmatch at line 8
+	;;;;;;; Assignment ;;;;;;;
+	push 5.5
+	push 2
+	pop F1
+	pop F2
+	;;;;;;; Add ;;;;;;;
+	fadd F2 F1
+	push F2
+	pop 0_test3
+	;;;;;;; Assignment ;;;;;;;
+	push 0
+error:type missmatch at line 15
+	;;;;;;; Declaration ;;;;;;;
+	DD 1_test3
+	;;;;;;; Assignment ;;;;;;;
+	push 0
+	pop 1_test3

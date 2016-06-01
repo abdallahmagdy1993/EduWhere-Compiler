@@ -1,0 +1,13 @@
+int first=0;
+{
+	float first=0f;
+
+}
+
+int first =1;
+int temp=10;
+const int C=temp;
+C=5;
+const float C=0f;
+int hello;
+helo=10;

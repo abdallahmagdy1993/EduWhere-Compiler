@@ -1,0 +1,17 @@
+int x=0;
+while(x<0){
+	float yy=10.0;
+	whileuntil(yy==0f){
+		yy=yy-1f;
+		repeat{
+			yy=yy+0.5;
+		}until(yy==5.0);
+	}
+	int zzz;
+	for(zzz=0;zzz<10;zzz=zzz+2){
+		bool abc=false;
+		do{
+			const char level='s';
+		}while(abc==true);	
+	}
+}

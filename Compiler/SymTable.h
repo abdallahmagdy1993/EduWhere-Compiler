@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include "NodeType.h"
+
+static int iterator;
+symNodeTag* symbolTable[1000];
+
+void addScope(){
+	symbolTable[iterator++]=NULL;
+}
+void removeScope(){
+	iterator--;
+	for(;iterator>=0&&symbolTable[iterator]!=NULL;iterator--);
+}
+int addVar(char* name, symEnum type,bool isConst,char** result){//search in scope
+	int j=iterator-1,c=0;
+	for(;j>=0&&symbolTable[j]!=NULL;j--){
+		if(strcmp(symbolTable[j]->name,name)==0){
+			*result= NULL;
+			return 0;
+		}
+	}
+	if(name==NULL)
+		{
+			*result= NULL;
+			return 0;
+		}
+	for(;j>=0;j--)
+		if(symbolTable[j]!=NULL&&strcmp(symbolTable[j]->name,name)==0)
+			break;
+	if(j>=0&&symbolTable[j]!=NULL)c=symbolTable[j]->num + 1;
+	char buffer[100];
+	sprintf(buffer,"%d_%s",c,name);
+	symbolTable[iterator]=malloc(sizeof(symNodeTag));
+	symbolTable[iterator]->name=strdup(name);
+	symbolTable[iterator]->assemblyName=strdup(buffer);
+	symbolTable[iterator]->type=type;
+	symbolTable[iterator]->num=c;
+	symbolTable[iterator++]->isConst=isConst;
+	*result= strdup(buffer);
+	return 0;
+
+}
+int getVar(char* name,char** result,bool *isConst){//return type
+	int j=iterator-1;
+	for(;j>=0;j--){
+		if(symbolTable[j]==NULL)
+			continue;
+		if(strcmp(symbolTable[j]->name,name)==0){
+			*result= strdup(symbolTable[j]->assemblyName);
+			*isConst=symbolTable[j]->isConst;
+			switch(symbolTable[j]->type){
+				case intType:
+					return 1;
+				break;
+				case floatType:
+					return 2;
+				break;
+				case charType:
+					return 3;
+				break;
+				case boolType:
+					return 4;
+				break;
+			}
+			
+		}
+	}
+	*result= NULL;
+	return 0;
+}
+int printTable(){
+	int i,level=0;
+	char*type=NULL;
+	FILE * pFile;
+  	pFile = fopen ("symbolTable.txt","w");
+  	fprintf(pFile,"\t\t**Symbol Table**\t\t\n");
+	for(i=0;i<iterator;i++){
+		if(symbolTable[i]==NULL)
+			level++;
+		else{
+				int j;
+				
+			switch(symbolTable[i]->type){
+				case intType:
+					type="int";
+					break;
+				case floatType:
+					type="float";
+					break;
+				case charType:
+					type="char";
+					break;
+				case boolType:
+					type="bool";
+					break;
+			}
+			if(symbolTable[i]->isConst==true)	
+				fprintf (pFile, "Level:%02d      Name:%s      Assembly_Name:%s      Type:%s      Constant?:YES\n",level,symbolTable[i]->name,symbolTable[i]->assemblyName,type);	
+			else
+				fprintf (pFile, "Level:%02d      Name:%s      Assembly_Name:%s      Type:%s      Constant?:NO\n",level,symbolTable[i]->name,symbolTable[i]->assemblyName,type);	
+		}
+	}
+	fclose(pFile);
+}
