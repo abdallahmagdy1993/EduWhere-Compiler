@@ -1,4 +1,4 @@
-#EduWhere Compiler
+# EduWhere Compiler
 The project implements a compiler that supports a programming language that contains:
 
 - Variables and Constants
@@ -7,11 +7,11 @@ The project implements a compiler that supports a programming language that cont
 - If-then-else, Switch, While, Whileuntil, Do-While, Repeat-Until and For statements
 - Block structure (nested scopes).
 
-##Tools and Technologies
+## Tools and Technologies
 - Flex Windows (Lex and Yacc)
 - Microsoft Visual C# (GUI)
 
-##Language Specifications
+## Language Specifications
 - The language is syntax like C
 - The language has six types of errors:
  - Syntax error: written code doesn’t match language rules
